@@ -9,7 +9,7 @@
 int _print_char(char c)
 {
 	_putchar(c);
-	return (0);
+	return (1);
 }
 /**
  * _print_string - Print string
@@ -26,6 +26,6 @@ int _print_string(char *s)
 	{
 		_putchar(s[i]);
 	}
-	return (0);
+	return (i);
 }
 
