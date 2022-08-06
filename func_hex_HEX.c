@@ -1,0 +1,39 @@
+#include "main.h"
+/*
+ * dectoHex - converts to hex
+ *
+ * @num - receives int
+ *
+ * Return: Length
+ */
+int dectoHex(int num)
+{
+	char hexa[200];
+	int temp;
+	int i = 0;
+	int length;
+
+	while (num != 0)
+	{
+		temp = num % 16;
+		if (temp < 10)
+		{
+			hexa[i] = temp + 48;
+			i++;
+		}
+		else
+		{
+			hexa[i] = temp + 55;
+			i++;
+		}
+		num = num / 16;
+	}
+	hexa[i] = '\0';
+	length = i - 1;
+	for (--i; i >= 0; i--)
+	{
+		_putchar(hexa[i]);
+	}
+	length = i - 1;
+	return (length);
+}

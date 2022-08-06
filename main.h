@@ -17,5 +17,11 @@ typedef struct locate
 } locate;
 int _printf(const char *format, ...);
 int _print_integer(int num);
+unsigned int _print_unsignedint(unsigned int num);
+int _print_string(char *s);
+int _print_char(char c);
+int dectoHex(int num);
+int lencount(char *s);
+char *_reverse(char *s);
 int _putchar(char c);
 #endif /* PRINTF_MAIN_H */

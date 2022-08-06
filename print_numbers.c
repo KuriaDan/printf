@@ -6,6 +6,7 @@
  *
  * Return: length count
  */
-int print_number(va_list arg)
+int print_number()
 {
+
 }
