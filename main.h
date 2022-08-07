@@ -23,5 +23,9 @@ int _print_char(char c);
 int dectoHexs(int num);
 int dectoHexc(int num);
 int decToBinary(int num);
+char *rot13(char *str);
+void rev_string(char *s);
+void print_rev(char *s);
+void reverse_array(int *a, int n);
 int _putchar(char c);
 #endif /* PRINTF_MAIN_H */
