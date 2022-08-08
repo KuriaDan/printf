@@ -6,24 +6,30 @@
  *
  * Return: Encoded string
  */
-char *rot13(char *str)
+int rot13(va_list list)
 {
 	int i = 0;
 	int m;
+	char *str;
 	char a[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
 	char r[] = "NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm";
 
+	str = va_arg(list, char *);
+	if (str == NULL)
+		return (-1);
 	for (; str[i] != '\0'; i++)
 	{
-		for (m = 0; a[m] != '\0'; m++)
+		for (m = 0; m <= 52; m++)
 		{
 			if (str[i] == a[m])
 			{
-				str[i] = r[m];
+				_putchar(r[m]);
 				break;
 			}
 		}
+		if (m == 53)
+			_putchar(str[i]);
 
 	}
-	return (str);
+	return (i);
 }
