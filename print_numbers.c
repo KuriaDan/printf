@@ -36,11 +36,28 @@ int print_number(va_list args)
 	return (len);
 }
 /**
-  * print_unsigned_number - Prints an unsigned number
+  * unsigned_integer - print unsigned integers
+  * @list: List of al arguments
+  * Return: a cunt of the numbers
+  */
+int unsigned_integer(va_list list)
+{
+	unsigned int num;
+
+	num = va_arg(list, unsigned int);
+
+	if (num == 0)
+		return (_print_unsigned_int(num));
+	if (num < 1)
+		return (-1);
+	return (_print_unsigned_int(num));
+}
+/**
+  * _print_unsigned_int - Prints an unsigned number
   * @n: unsigned int to be printed
   * Return: amount of numbers to be printed
   */
-int print_unsigned_int(unsigned int n)
+int _print_unsigned_int(unsigned int n)
 {
 	int div;
 	int len;
@@ -60,3 +77,4 @@ int print_unsigned_int(unsigned int n)
 	}
 	return (len);
 }
+
