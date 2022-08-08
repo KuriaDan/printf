@@ -1,65 +1,85 @@
 #include "main.h"
-#include <string.h>
+#include <stdio.h>
 /**
- * rev_string - reverse a strinG
+ * print_rev - reverse a strinG
  *
- * @s: takes strng
+ * @arg: va_list argument from the printf function
  *
- * Return: Void
+ * Return: length of string
  */
-void rev_string(char *s)
+int print_rev(va_list arg)
 {
-	int i = 0;
-	int count = 0;
-	int m;
-	char rev[1000];
+	int len;
+	char *str;
+	char *ptr;
 
-	for (; s[i] != '\0'; i++)
-	{
-		count++;
-	}
-	count--;
-	for (m = 0; count >= 0; count--)
-	{
-		rev[m] = s[count];
-		rev[m + 1] = '\0';
-		m++;
-	}
-	strcpy(s, rev);
-}
-/**
- * print_rev - Prints in reverse
- *
- * @s : takes strings
- *
- * Return: void
- */
-void print_rev(char *s)
-{
-	int i = 0;
-	int count = 0;
-
-	for (; s[i] != '\0'; i++)
-	{
-		count++;
-	}
-	count--;
-	for (; count >= 0; count--)
-	{
-		_putchar(s[count]);
-	}
-	_putchar('\n');
+	str = va_arg(arg, char *);
+	if (str == NULL)
+		return (-1);
+	ptr = rev_string(str);
+	if (ptr == NULL)
+		return (-1);
+	for (len = 0; ptr[len] != '\0'; len++)
+		_putchar(ptr[len]);
+	free(ptr);
+	return (len);
 }
 
 /**
- * reverse_array - reverses the content of array
+ * rev_string - Reverses a string
  *
- * @a: Points to int
+ * @s : string to reverse
  *
- * @n: takes int
- *
- * Return:void
+ * Return: pointer to a character
  */
+
+char *rev_string(char *s)
+{
+	int len;
+	int head;
+	char tmp;
+	char *dest;
+
+	for (len = 0; s[len] != '\0'; len++)
+	{}
+
+	dest = malloc(sizeof(char) * len + 1);
+	if (dest == NULL)
+		return (NULL);
+	_memcpy(dest, s, len);
+	for (head = 0; head < len; head++, len--)
+	{
+		tmp = dest[len - 1];
+		dest[len - 1] = dest[head];
+		dest[head] = tmp;
+	}
+	return (dest);
+}
+
+/**
+  * _memcpy - copy memory area
+  * @dest: Destination for copying
+  * @src: source to copy from
+  * @n: number of bytes to copy
+  * Return: pointer to dest
+  */
+char *_memcpy(char *dest, char *src, unsigned int n)
+{
+	unsigned int i;
+
+	for (i = 0; i < n; i++)
+		dest[i] = src[i];
+	dest[i] = '\0';
+	return (dest);
+}
+/**
+  * reverse_array - reverses the content of array
+  * @a: Points to int
+  * @n: takes int
+  *
+  * Return: void
+  */
+
 void reverse_array(int *a, int n)
 {
 	int i = 0;
@@ -76,4 +96,3 @@ void reverse_array(int *a, int n)
 		n--;
 	}
 }
-

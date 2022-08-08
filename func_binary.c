@@ -1,27 +1,54 @@
 #include "main.h"
 /**
- * dectobinary - convert to binary and print
+ * print_binary - convert to binary and print
  *
- * @num: takes dec
+ * @list: list of arguments passed
  *
- * Return: length
+ * Return: length of number to be printed
  */
-int decToBinary(int num)
+int print_binary(va_list list)
 {
-	int binaryNum[50];
-	int i = 0;
-	int length;
+	unsigned int num;
+	int i, len;
+	char *str;
+	char *rev_str;
 
-	while (num > 0)
+	num = va_arg(list, unsigned int);
+	if (num == 0)
+		return (_putchar('0'));
+	if (num < 1)
+		return (-1);
+	len = base_len(num, 2);
+	str = malloc(sizeof(char) * len + 1);
+	if (str == NULL)
+		return (-1);
+
+	for (i = 0; num > 0; i++)
 	{
-		binaryNum[i] = num % 2;
+		if (num % 2 == 0)
+			str[i] = '0';
+		else
+			str[i] = '1';
 		num = num / 2;
-		i++;
 	}
-	length = i;
-	for (--i; i >= 0; i--)
-	{
-		_putchar(binaryNum[i] + '0');
-	}
-	return (length);
+	str[i] = '\0';
+	rev_str = rev_string(str);
+	if (rev_str == NULL)
+		return (-1);
+	write_base(rev_str);
+	free(str);
+	free(rev_str);
+	return (len);
+}
+
+/**
+ * write_base - sends characters to be written on standard output
+ * @str: String to parse
+ */
+void write_base(char *str)
+{
+	int i;
+
+	for (i = 0; str[i] != '\0'; i++)
+		_putchar(str[i]);
 }
