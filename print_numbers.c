@@ -31,7 +31,7 @@ int print_number(va_list args)
 	{
 		len += _putchar('0' + num / div);
 		num %= div;
-		div *= 10;
+		div /= 10;
 	}
 	return (len);
 }
